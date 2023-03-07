@@ -5,11 +5,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from main.models import Company
 from main.serializers import CompanySerializer
+from rest_framework.decorators import api_view
 
-
-class CompanyAPIList(generics.ListCreateAPIView):
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
+@api_view(['GET'])
+def get_company(request):
+    company = Company.objects.all()
+    serializer = CompanySerializer(company, many=True)
+    return Response(serializer.data)
 
 
 class CompanyUpdate(generics.UpdateAPIView):

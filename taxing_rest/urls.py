@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-from main.views import CompanyAPIList, CompanyUpdate, CompanyDetail
+from main.views import CompanyUpdate, CompanyDetail, get_company
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/auth/', include('djoser.urls')),
-    path('api/v1/companylist', CompanyAPIList.as_view()),
+    path('api/v1/companylist', get_company),
     path('api/v1/companylist/<int:pk>', CompanyUpdate.as_view()),
     path('api/v1/companydetail/<int:pk>', CompanyDetail.as_view()),
     re_path(r'^auth/', include('djoser.urls.authtoken')),

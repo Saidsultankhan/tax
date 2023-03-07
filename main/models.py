@@ -110,7 +110,7 @@ class Company(models.Model):
     not_paid = models.PositiveIntegerField(verbose_name='Штраф?', default=0)
     # area = models.ForeignKey(Areas, on_delete=models.CASCADE, verbose_name='Прописка')
     has_fine = models.BooleanField(verbose_name='Есть штраф?', default=False)
-    paid_before = models.BooleanField(verbose_name='Все оплачено?', default=False)
+    paid_before = models.BooleanField(verbose_name='Все оплачено?', default=True)
     for_militiary = models.BooleanField(verbose_name='Для МВД?', default=False)
     # checked = models.BooleanField(verbose_name='Данные проверены', default=False)
 
